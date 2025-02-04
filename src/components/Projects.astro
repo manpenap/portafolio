@@ -1,0 +1,41 @@
+---
+// src/components/Projects.astro
+// Aquí puedes definir un arreglo de proyectos o incluso importarlos desde un archivo JSON.
+const proyectos = [
+  {
+    nombre: "To-Do List Avanzada",
+    descripcion: "Aplicación de tareas con funcionalidades CRUD, filtros y almacenamiento local.",
+    enlace: "#"
+  },
+  {
+    nombre: "Dashboard de Datos Interactivo",
+    descripcion: "Visualización dinámica de datos con gráficos interactivos.",
+    enlace: "#"
+  },
+  {
+    nombre: "API REST para Gestión de Usuarios",
+    descripcion: "API creada con Node.js y Express, implementando autenticación JWT.",
+    enlace: "#"
+  },
+  {
+    nombre: "Mini Aplicación de IA: Chatbot",
+    descripcion: "Integración con la API de OpenAI para responder preguntas en un entorno de chatbot.",
+    enlace: "#"
+  }
+];
+---
+
+<section id="projects" class="py-8">
+  <h2 class="text-2xl font-bold mb-4">Proyectos</h2>
+  <div class="grid gap-6 md:grid-cols-2">
+    {proyectos.map(proyecto => (
+      <div class="border p-4 rounded shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">{proyecto.nombre}</h3>
+        <p>{proyecto.descripcion}</p>
+        <a href={proyecto.enlace} class="text-blue-500 hover:underline mt-2 inline-block">
+          Ver proyecto →
+        </a>
+      </div>
+    ))}
+  </div>
+</section>
