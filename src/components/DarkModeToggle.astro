@@ -1,0 +1,17 @@
+---
+// src/components/DarkModeToggle.astro
+---
+<button 
+  id="darkModeToggle" 
+  class="px-4 py-2 bg-primary DEFAULT text-white rounded hover:bg-primary-dark transition"
+>
+  Alternar Modo Oscuro
+</button>
+
+<script client:load>
+  // Al cargar el cliente, se asocia el evento para alternar la clase "dark" en el elemento raíz
+  const toggle = document.getElementById("darkModeToggle");
+  toggle.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+  });
+</script>
