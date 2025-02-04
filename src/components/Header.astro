@@ -1,17 +1,39 @@
 ---
-// src/components/Header.astro
----
 
+---
 <header class="bg-black text-text-light dark:bg-yellow-600 dark:text-text-dark py-12 transition-colors duration-300">
-    <div class="container mx-auto flex justify-between items-center px-4">
-      <h1 class="text-xl font-bold">Mi Portafolio</h1>
-      <nav>
-        <ul class="flex space-x-4 ">
-          <li><a href="#about" class="hover:underline">Sobre Mí</a></li>
-          <li><a href="#projects" class="hover:underline">Proyectos</a></li>
-          <li><a href="#contact" class="hover:underline">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  
+  <div class="container mx-auto flex justify-between items-center px-4">
+    <h1 class="text-xl font-bold">Mi Portafolio</h1>
+
+    <!-- Botón hamburguesa: visible solo en dispositivos móviles -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden focus:outline-none"
+      aria-label="Abrir menú">
+      <!-- Ícono hamburguesa (puedes personalizarlo) -->
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <!-- Menú de navegación: oculto en móviles -->
+    <nav id="mobile-menu" class="hidden md:block">
+      <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+        <li><a href="#about" class="hover:underline">Sobre Mí</a></li>
+        <li><a href="#projects" class="hover:underline">Proyectos</a></li>
+        <li><a href="#contact" class="hover:underline">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Script para togglear el menú en móviles -->
+  <script client:load>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</header>
