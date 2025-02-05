@@ -1,16 +1,17 @@
 ---
-
+import DarkModeToggle from "./DarkModeToggle.astro"
 ---
-<header class="bg-black text-text-light dark:bg-yellow-600 dark:text-text-dark py-12 transition-colors duration-300">
+<header class="bg-primary-light text-text-light dark:bg-primary-dark dark:text-text-dark py-12 transition-colors duration-300">
   <div class="container mx-auto flex justify-between items-center px-4">
-    <h1 class="text-xl font-bold">Mi Portafolio</h1>
+    <h1 class="text-xl font-bold">
+      <a href="/" class="hover:underline">Mi Portafolio</a>
+    </h1>
 
     <!-- Botón hamburguesa: visible solo en dispositivos móviles -->
     <button
       id="mobile-menu-button"
       class="md:hidden focus:outline-none"
       aria-label="Abrir menú">
-      <!-- Ícono hamburguesa (puedes personalizarlo) -->
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M4 6h16M4 12h16M4 18h16" />
@@ -18,22 +19,62 @@
     </button>
 
     <!-- Menú de navegación: oculto en móviles -->
-    <nav id="mobile-menu" class="hidden md:block">
-      <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-        <li><a href="#about" class="hover:underline">Sobre Mí</a></li>
-        <li><a href="#projects" class="hover:underline">Proyectos</a></li>
-        <li><a href="#contact" class="hover:underline">Contacto</a></li>
+    <nav id="mobile-menu" class="hidden md:block ">
+      <ul class="flex flex-col items-center md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+        <li><a href="/#about" class="nav-link hover:underline">Sobre Mí</a></li>
+        <li><a href="/#projects" class="nav-link hover:underline">Proyectos</a></li>
+        <li><a href="/#contact" class="nav-link hover:underline">Contacto</a></li>
+        <DarkModeToggle />
       </ul>
+      <!-- Botón de cerrar menú (ícono de X) -->
+      <button id="close-menu-button" class="hidden md:hidden focus:outline-none mt-4 flex justify-center items-center" aria-label="Cerrar menú">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </nav>
   </div>
 
-  <!-- Script para togglear el menú en móviles -->
+  <!-- Script para togglear el menú en móviles y gestionar la navegación -->
   <script client:load>
     const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
     mobileMenuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('translate-y-0');
+      mobileMenu.classList.toggle('opacity-100');
+      mobileMenuButton.classList.toggle('hidden');
+      closeMenuButton.classList.toggle('hidden');
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+      mobileMenuButton.classList.remove('hidden');
+      closeMenuButton.classList.add('hidden');
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href').split('#')[1];
+
+        if (window.location.pathname !== '/') {
+          window.location.href = `/#${targetId}`;
+        } else {
+          event.preventDefault();
+          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Cerrar el menú automáticamente al hacer clic en un enlace
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+        mobileMenuButton.classList.remove('hidden');
+        closeMenuButton.classList.add('hidden');
+      });
     });
   </script>
 </header>
+

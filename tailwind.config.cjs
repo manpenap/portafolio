@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}"
+    "./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,md,mdx}"
   ],
   darkMode: 'class', 
   theme: {
@@ -9,13 +9,13 @@ module.exports = {
       colors: {
         // Define aquí tu paleta de colores personalizada
         primary: {
-          light: '#4f46e5',
-          DEFAULT: '#4338ca',
-          dark: '#3730a3',
+          dark: '#222831',
+          light: '#D9DFC6',
         },
         background: {
+          
           light: '#ffffff',
-          dark: '#1f2937',
+          dark: '#31363F',
         },
         text: {
           light: '#1f2937',
@@ -24,5 +24,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
