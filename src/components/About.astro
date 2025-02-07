@@ -2,16 +2,76 @@
 // src/components/About.astro
 ---
 
-<section id="about" class=" py-8">
-    <h2 class="text-2xl font-bold mb-4">Sobre Mí</h2>
-    <p style="text-align: justify;">
-      Soy Manuel, un profesional con una sólida trayectoria en el mundo bancario, donde me especialicé en la atención a clientes empresariales, brindando soluciones personalizadas y construyendo relaciones basadas en la confianza y el compromiso. Durante años, perfeccioné mis habilidades en la gestión de cuentas, la resolución de problemas y el análisis de necesidades, lo que me permitió desarrollar un enfoque metódico y orientado a resultados.
-      <br></p>
-      Sin embargo, mi curiosidad y pasión por la tecnología me llevaron a dar un giro en mi carrera, explorando el fascinante mundo del desarrollo web y la inteligencia artificial. En este proceso de transición, he adquirido conocimientos en tecnologías como HTML, CSS, JavaScript, React, Node.js, y en el uso de APIs de IA, aplicándolos en proyectos que demuestran mi capacidad de aprendizaje continuo y adaptación.
-      <br></br>
-      Hoy, combino mi experiencia en el análisis y la resolución de problemas del ámbito financiero con mi formación en desarrollo web, lo que me permite abordar desafíos tecnológicos con una perspectiva única y estratégica. Estoy en busca de oportunidades donde pueda aportar mi conocimiento, seguir creciendo profesionalmente y contribuir con soluciones innovadoras que generen un impacto positivo.
-      
-      
-    </p>
-  </section>
-  
+<section id="about" class="py-8 px-4">
+  <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center lg:items-start gap-8">
+    <!-- Texto -->
+    <div class="lg:w-1/2 text-justify opacity-0 translate-x-[-50px] transition-transform duration-700 ease-out" data-animate="fade-left">
+      <h2 class="text-2xl font-bold mb-4 mt-10">Sobre Mí</h2>
+      <p>
+        Soy Manuel, un profesional con una sólida trayectoria en el mundo bancario, donde me especialicé en la atención a clientes empresariales, brindando soluciones personalizadas y construyendo relaciones basadas en la confianza y el compromiso. Durante años, perfeccioné mis habilidades en la gestión de cuentas, la resolución de problemas y el análisis de necesidades, lo que me permitió desarrollar un enfoque metódico y orientado a resultados.
+      </p>
+      <br />
+      <p>
+        Sin embargo, mi curiosidad y pasión por la tecnología me llevaron a dar un giro en mi carrera, explorando el fascinante mundo del desarrollo web y la inteligencia artificial. En este proceso de transición, he adquirido conocimientos en tecnologías como HTML, CSS, JavaScript, React, Node.js, y en el uso de APIs de IA, aplicándolos en proyectos que demuestran mi capacidad de aprendizaje continuo y adaptación.
+      </p>
+      <br />
+      <p>
+        Hoy, combino mi experiencia en el análisis y la resolución de problemas del ámbito financiero con mi formación en desarrollo web, lo que me permite abordar desafíos tecnológicos con una perspectiva única y estratégica. Estoy en busca de oportunidades donde pueda aportar mi conocimiento, seguir creciendo profesionalmente y contribuir con soluciones innovadoras que generen un impacto positivo.
+      </p>
+    </div>
+
+    <!-- Imagen -->
+    <div class="lg:w-1/2 opacity-0 translate-x-[50px] transition-transform duration-700 ease-out" data-animate="fade-right">
+      <img src="src/assets/about.jpg" alt="Manuel" class="w-full rounded-lg shadow-lg mt-8" />
+    </div>
+  </div>
+
+  <!-- Script para animación al hacer scroll -->
+  <script client:load>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.dataset.animate === 'fade-left') {
+            entry.target.classList.add('animate-fade-in-left');
+          } else if (entry.target.dataset.animate === 'fade-right') {
+            entry.target.classList.add('animate-fade-in-right');
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+  </script>
+
+  <style>
+    @keyframes fade-in-left {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fade-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-fade-in-left {
+      animation: fade-in-left 0.7s ease-out forwards;
+    }
+
+    .animate-fade-in-right {
+      animation: fade-in-right 0.7s ease-out forwards;
+    }
+  </style>
+</section>

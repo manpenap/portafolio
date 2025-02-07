@@ -1,78 +1,45 @@
 ---
 import DarkModeToggle from "./DarkModeToggle.astro"
 ---
-<header class="bg-primary-light text-text-light dark:bg-primary-dark dark:text-text-dark py-12 transition-colors duration-300">
-  <div class="container mx-auto flex justify-between items-center px-4">
-    <h1 class="text-xl font-bold">
-      <a href="/" class="hover:underline">Mi Portafolio</a>
+<header class="fixed w-full bg-primary-default text-white z-50">
+  <div class="container mx-auto flex justify-between items-center px-6 py-4">
+    <h1 class="text-2xl font-bold">
+      <a href="/" class="hover:text-blue-500 transition duration-300">Manuel Dev</a>
     </h1>
 
     <!-- Botón hamburguesa: visible solo en dispositivos móviles -->
-    <button
-      id="mobile-menu-button"
-      class="md:hidden focus:outline-none"
-      aria-label="Abrir menú">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
+    <button id="mobile-menu-button" class="md:hidden focus:outline-none" aria-label="Abrir menú">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
 
-    <!-- Menú de navegación: oculto en móviles -->
-    <nav id="mobile-menu" class="hidden md:block ">
-      <ul class="flex flex-col items-center md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-        <li><a href="/#about" class="nav-link hover:underline">Sobre Mí</a></li>
-        <li><a href="/#projects" class="nav-link hover:underline">Proyectos</a></li>
-        <li><a href="/#contact" class="nav-link hover:underline">Contacto</a></li>
+    <!-- Menú de navegación -->
+    <nav id="mobile-menu" class="hidden md:flex md:items-center md:space-x-8 bg-primary-default md:bg-transparent md:static absolute top-16 left-0 w-full md:w-auto p-6 md:p-0 transition-transform transform md:translate-y-0">
+      <ul class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+        <li><a href="/#about" class="nav-link text-white hover:text-blue-500 transition">Sobre Mí</a></li>
+        <li><a href="/#projects" class="nav-link text-white hover:text-blue-500 transition">Proyectos</a></li>
+        <li><a href="/#contact" class="nav-link text-white hover:text-blue-500 transition">Contacto</a></li>
         <DarkModeToggle />
       </ul>
-      <!-- Botón de cerrar menú (ícono de X) -->
-      <button id="close-menu-button" class="hidden md:hidden focus:outline-none mt-4 flex justify-center items-center" aria-label="Cerrar menú">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
     </nav>
   </div>
 
-  <!-- Script para togglear el menú en móviles y gestionar la navegación -->
+  <!-- Script para togglear el menú en móviles -->
   <script client:load>
     const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const closeMenuButton = document.getElementById('close-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
 
     mobileMenuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
       mobileMenu.classList.toggle('translate-y-0');
-      mobileMenu.classList.toggle('opacity-100');
-      mobileMenuButton.classList.toggle('hidden');
-      closeMenuButton.classList.toggle('hidden');
+      
     });
 
-    closeMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      mobileMenu.classList.remove('translate-y-0', 'opacity-100');
-      mobileMenuButton.classList.remove('hidden');
-      closeMenuButton.classList.add('hidden');
-    });
-
+    const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-      link.addEventListener('click', (event) => {
-        const targetId = link.getAttribute('href').split('#')[1];
-
-        if (window.location.pathname !== '/') {
-          window.location.href = `/#${targetId}`;
-        } else {
-          event.preventDefault();
-          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Cerrar el menú automáticamente al hacer clic en un enlace
+      link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('translate-y-0', 'opacity-100');
-        mobileMenuButton.classList.remove('hidden');
-        closeMenuButton.classList.add('hidden');
       });
     });
   </script>

@@ -5,15 +5,17 @@ import About from '../components/About.astro';
 import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
 
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PortafolioLayout from '../layouts/PortafolioLayout.astro';
+import Hero from '../components/Hero.astro';
 ---
 
-<BaseLayout>
+<PortafolioLayout>
   
-  <main class="container mx-auto px-4 py-8">
+  
+    <Hero />
     <About />
     <Projects />
     <Contact />
     
-  </main>
-</BaseLayout>
+ 
+</PortafolioLayout>

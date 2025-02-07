@@ -3,10 +3,11 @@
 // Aquí puedes definir un arreglo de proyectos o incluso importarlos desde un archivo JSON.
 const proyectos = [
   {
-    "nombre": "Portafolio Web con Astro",
-    "descripcion": "Portafolio desarrollado con Astro, HTML5, CSS3 y JavaScript, con diseño responsivo, modo oscuro y optimización SEO.",
-    "enlace": "/portafolio/portafolio-web-con-astro"
+    nombre: "Portafolio Web con Astro",
+    descripcion: "Portafolio desarrollado con Astro, HTML5, CSS3 y JavaScript, con diseño responsivo, modo oscuro y optimización SEO.",
+    enlace: "/portafolio/portafolio-web-con-astro"
   },
+  /*
   {
     nombre: "To-Do List Avanzada",
     descripcion: "Aplicación de tareas con funcionalidades CRUD, filtros y almacenamiento local.",
@@ -27,20 +28,71 @@ const proyectos = [
     descripcion: "Integración con la API de OpenAI para responder preguntas en un entorno de chatbot.",
     enlace: "#"
   }
+  */
 ];
 ---
 
-<section id="projects" class="py-8">
-  <h2 class="text-2xl font-bold mb-4">Proyectos</h2>
-  <div class="grid gap-6 md:grid-cols-2">
-    {proyectos.map(proyecto => (
-      <div class="border p-4 rounded shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-2">{proyecto.nombre}</h3>
-        <p>{proyecto.descripcion}</p>
-        <a href={proyecto.enlace} class="text-blue-500 hover:underline mt-2 inline-block">
-          Ver proyecto →
-        </a>
-      </div>
-    ))}
+<section id="projects" class="py-8 px-4">
+  <div class="container mx-auto">
+    <h2 class="text-2xl font-bold mb-4 mt-10">Proyectos</h2>
+    <div class=`grid gap-6  ${proyectos.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1' }`>
+      {proyectos.map((proyecto) => (
+        <div class="project-card border p-4 rounded shadow hover:shadow-lg transition opacity-0 translate-y-10" data-animate="fade-up">
+          <h3 class="text-xl font-semibold mb-2">{proyecto.nombre}</h3>
+          <p>{proyecto.descripcion}</p>
+          <a href={proyecto.enlace} class="text-blue-500 hover:underline mt-2 inline-block">
+            Ver proyecto →
+          </a>
+        </div>
+      ))}
+    </div>
   </div>
+  
+
+  <!-- Script para animación al hacer scroll -->
+  <script client:load>
+    if (!window.hasRunProjectsObserver) { // Verificación para evitar múltiples ejecuciones
+      window.hasRunProjectsObserver = true;
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-in-up');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        const elements = document.querySelectorAll('[data-animate="fade-up"]');
+        elements.forEach(el => observer.observe(el));
+
+        // Fallback en caso de que IntersectionObserver no funcione
+        if (!('IntersectionObserver' in window)) {
+          elements.forEach(el => el.classList.add('animate-fade-in-up'));
+        }
+      });
+    }
+  </script>
+
+  <style>
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.7s ease-out forwards;
+    }
+
+    /* Fallback para forzar visibilidad si hay un error */
+    .project-card {
+      will-change: transform, opacity;
+    }
+  </style>
 </section>

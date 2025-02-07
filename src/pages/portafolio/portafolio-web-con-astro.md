@@ -1,9 +1,8 @@
 ---
 title: "Portafolio Web con Astro: Mostrando lo Mejor del Desarrollo Front-End"
 date: "2025-02-04"
-layout: "../../layouts/BaseLayout.astro"
+layout: "../../layouts/PostLayout.astro"
 ---
-
 
 # Portafolio Web con Astro: Mostrando lo Mejor del Desarrollo Front-End
 

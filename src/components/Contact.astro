@@ -1,14 +1,85 @@
 ---
-// src/components/Contact.astro
+import { Icon } from "astro-iconify";
 ---
 
-<section id="contact" class="py-8">
-    <h2 class="text-2xl font-bold mb-4">Contacto</h2>
-    <p>Puedes contactarme a través de las siguientes plataformas:</p>
-    <ul class="list-disc list-inside">
-      <li>Email: <a href="mailto:tuemail@example.com" class="text-blue-500 hover:underline">tuemail@example.com</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/tuusuario" class="text-blue-500 hover:underline" target="_blank">Mi Perfil</a></li>
-      <li>GitHub: <a href="https://github.com/tuusuario" class="text-blue-500 hover:underline" target="_blank">tuusuario</a></li>
-    </ul>
-  </section>
-  
+<section id="contact" class="py-16 px-4 bg-background-light-secondary dark:bg-background-dark-secondary ">
+  <div class="container mx-auto text-center opacity-0 translate-y-10 transition-transform duration-700 ease-out" data-animate="fade-up">
+    <h2 class="text-3xl font-bold mb-8 mt-10">Get In Touch</h2>
+    <p class="mb-8">
+      I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out using the form below.
+    </p>
+    
+    <form action="https://api.web3forms.com/submit" method="POST" class="max-w-lg mx-auto">
+      <input type="hidden" name="access_key" value="your-access-key-here" />
+      
+      <div class="mb-4">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Your Message"
+          class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          required
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-600 transition-colors"
+      >
+        Send Message
+      </button>
+    </form>
+    
+
+  </div>
+
+  <!-- Script para animación al hacer scroll -->
+  <script client:load>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      const elements = document.querySelectorAll('[data-animate="fade-up"]');
+      elements.forEach(el => observer.observe(el));
+    });
+  </script>
+
+  <style>
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.7s ease-out forwards;
+    }
+  </style>
+</section>

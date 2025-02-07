@@ -3,7 +3,7 @@
 ---
 <button 
 id="darkModeToggle" 
-class="px-4 py-2 bg-primary-light text-text-light rounded dark:bg-primary-dark dark:text-text-dark flex items-center justify-center"
+class="px-4 py-2 bg-primary-default text-white hover:text-blue-500 rounded  flex items-center justify-center"
 >
 <!-- Ícono de luna (se muestra en modo claro, para indicar la opción de activar modo oscuro) -->
 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -16,9 +16,25 @@ class="px-4 py-2 bg-primary-light text-text-light rounded dark:bg-primary-dark d
 </button>
 
 <script client:load>
-  // Al cargar el cliente, se asocia el evento para alternar la clase "dark" en el elemento raíz
-  const toggle = document.getElementById("darkModeToggle");
-  toggle.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("darkModeToggle");
+
+    // Aplicar el estado guardado en localStorage
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+    toggle.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+
+      // Guardar la preferencia en localStorage
+      if (document.documentElement.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
   });
 </script>
