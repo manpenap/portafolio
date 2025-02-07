@@ -12,7 +12,8 @@
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.3",
     "astro": "^5.2.3",
-    "astro-iconify": "^1.2.0"
+    "astro-iconify": "^1.2.0",
+    "dotenv": "^16.4.7"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.0",

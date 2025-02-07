@@ -1,48 +1,99 @@
-# Astro Starter Kit: Basics
+## 🚀 Portafolio Web - Manuel Peña
 
-```sh
-npm create astro@latest -- --template basics
+### 📌 Descripción
+Este es mi portafolio web desarrollado con [Astro](https://astro.build/), diseñado para presentar mis proyectos, habilidades y experiencia en desarrollo web. Incluye una sección sobre mí, proyectos destacados y un formulario de contacto.
+
+---
+
+## 🔧 Tecnologías Utilizadas
+- **Frontend**: [Astro](https://astro.build/), HTML, CSS (TailwindCSS), JavaScript
+- **Estilos**: Tailwind CSS
+- **Optimización**: Open Graph Meta Tags, Twitter Cards, carga diferida de CSS
+- **Accesibilidad & UX**: Diseño responsivo, modo oscuro, transiciones suaves
+- **Seguridad**: Validaciones en formularios, protección contra XSS, medidas contra ataques de tabnabbing
+
+---
+
+## 📺 Estructura del Proyecto
+```bash
+📦 mi-portafolio
+ ├📂 src
+ ┃ ├📂 components
+ ┃ ┃ ├📋 About.astro      # Sección "Sobre mí"
+ ┃ ┃ ├📋 Contact.astro    # Formulario de contacto con Web3Forms
+ ┃ ┃ ├📋 DarkModeToggle.astro # Botón de cambio de tema
+ ┃ ┃ ├📋 Footer.astro     # Pie de página con redes sociales
+ ┃ ┃ ├📋 Header.astro     # Barra de navegación
+ ┃ ┃ ├📋 Hero.astro       # Sección de presentación
+ ┃ ┃ ├📋 Projects.astro   # Sección de proyectos
+ ┃ ├📂 layouts
+ ┃ ┃ ├📋 PortafolioLayout.astro # Diseño principal
+ ┃ ├📂 pages
+ ┃ ┃ ├📋 index.astro      # Página de inicio
+ ├📂 public
+ ┃ └📋 assets             # Imágenes y otros archivos estáticos
+ ├📂 styles
+ ┃ └📋 global.css         # Estilos generales
+ ├📋 package.json         # Dependencias del proyecto
+ ├📋 astro.config.mjs     # Configuración de Astro
+ ├📋 README.md            # Este archivo
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+## 🚀 Instalación y Uso
+### 1⃣ Clonar el repositorio
+```bash
+git clone https://github.com/manpenap/mi-portafolio.git
+cd mi-portafolio
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### 2⃣ Instalar dependencias
+```bash
+npm install
+```
 
-## 🧞 Commands
+### 3⃣ Ejecutar en modo desarrollo
+```bash
+npm run dev
+```
+El sitio estará disponible en `http://localhost:4321` (por defecto).
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🌍 Despliegue
+### 🔥 Vercel (Recomendado)
+1. Instalar Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+2. Ejecutar el despliegue:
+   ```bash
+   vercel
+   ```
 
-## 👀 Want to learn more?
+### 🌿 Opción Alternativa: GitHub Pages
+Puedes exportar el sitio estático y alojarlo en GitHub Pages:
+```bash
+npm run build
+```
+Sube el contenido de `dist/` a GitHub Pages o cualquier otro hosting estático.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+## 🔐 Seguridad Implementada
+- ✅ **Protección contra XSS**: Se evita el uso de `innerHTML` y se sanitizan los datos antes de insertarlos en el DOM.
+- ✅ **No exposición de claves API**: Se oculta la clave de Web3Forms usando variables de entorno.
+- ✅ **Protección contra ataques de tabnabbing**: Se usa `rel="noopener noreferrer"` en enlaces externos.
+- ✅ **Modo oscuro seguro**: Se usa `localStorage` de forma segura sin riesgo de manipulación maliciosa.
+- ✅ **Optimización de carga**: Se cargan estilos de forma eficiente y se minimizan bloqueos de renderizado.
+
+---
+
+## 💌 Contacto
+Si tienes alguna sugerencia o quieres colaborar, ¡contáctame!
+- 📧 **Email**: [manpenap@gmail.com](mailto:manpenap@gmail.com)
+- 💼 **LinkedIn**: [manuel-alejandro-pena](https://www.linkedin.com/in/manuel-alejandro-pena/)
+- 🖥 **GitHub**: [manpenap](https://github.com/manpenap)
+
+---
