@@ -6,7 +6,7 @@ layout: "../../layouts/PostLayout.astro"
 
 
 
-<a href="https://react-shopi-store.vercel.app" target="_blank" style="color: blue; text-decoration: none;">🚀 Ver el proyecto en Vercel</a> | <a href="https://github.com/manpenap/react-shopi-store" target="_blank" style="color: blue; text-decoration: none;">💻 Repositorio en GitHub</a>
+<a href="https://react-shopi-store.vercel.app" target="_blank" style="color: gray; text-decoration: none;">🚀 Ver el proyecto en Vercel</a> | <a href="https://github.com/manpenap/react-shopi-store" target="_blank" style="color: gray; text-decoration: none;">💻 Repositorio en GitHub</a>
 
 
 # Descubriendo el Poder de React: Mi Proyecto de Tienda Virtual
@@ -45,5 +45,4 @@ Si necesitas más detalles sobre alguna funcionalidad en particular o te gustar�
 
 ¿Te gustaría saber algo más específico? Estoy aquí para ayudarte.
 
-<a href="https://react-shopi-store.vercel.app" target="_blank" style="color: blue; text-decoration: none;">🚀 Ver el proyecto en Vercel</a> | <a href="https://github.com/manpenap/react-shopi-store" target="_blank" style="color: blue; text-decoration: none;">💻 Repositorio en GitHub</a>
-
+<a href="https://react-shopi-store.vercel.app" target="_blank" style="color: gray; text-decoration: none;">🚀 Ver el proyecto en Vercel</a> | <a href="https://github.com/manpenap/react-shopi-store" target="_blank" style="color: gray; text-decoration: none;">💻 Repositorio en GitHub</a>
