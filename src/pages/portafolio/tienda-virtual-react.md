@@ -30,7 +30,7 @@ Uno de los aspectos más interesantes del proyecto fue el consumo de datos a tra
 - Gestionar peticiones HTTP y manejar respuestas, lo que es fundamental en el desarrollo de aplicaciones modernas.
 - Simular escenarios reales de consumo de datos, optimizando la experiencia del usuario y validando mi enfoque en la integración de APIs.
 
-## Valor para Mi Marca Personal
+## El valor del proyecto
 
 Este proyecto es más que una simple tienda virtual. Es un reflejo de mi capacidad para:
 - **Crear experiencias de usuario interactivas y dinámicas**: Gracias a las rutas y la gestión del estado, la navegación es intuitiva y la aplicación se siente viva.
