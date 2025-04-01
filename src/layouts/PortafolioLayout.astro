@@ -1,19 +1,39 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="es">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MQY9V8RXC"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-0MQY9V8RXC");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mi Portafolio - Desarrollador Web</title>
-    <meta name="description" content="Portafolio de Manuel, desarrollador web especializado en tecnologías modernas como React, Node.js y Astro." />
+    <meta
+      name="description"
+      content="Portafolio de Manuel, desarrollador web especializado en tecnologías modernas como React, Node.js y Astro."
+    />
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Portafolio de Manuel - Desarrollador Web" />
-    <meta property="og:description" content="Descubre proyectos de desarrollo web con React, Node.js y más." />
+    <meta
+      property="og:title"
+      content="Portafolio de Manuel - Desarrollador Web"
+    />
+    <meta
+      property="og:description"
+      content="Descubre proyectos de desarrollo web con React, Node.js y más."
+    />
     <meta property="og:image" content="/assets/about.jpg" />
     <meta property="og:type" content="website" />
 
@@ -21,11 +41,18 @@ import Footer from '../components/Footer.astro';
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Optimización de carga de CSS -->
-    <link rel="preload" href="/styles/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link
+      rel="preload"
+      href="/styles/global.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
     <noscript><link rel="stylesheet" href="/styles/global.css" /></noscript>
-
   </head>
-  <body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark transition-colors duration-500">
+
+  <body
+    class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark transition-colors duration-500"
+  >
     <Header />
     <main>
       <slot />
