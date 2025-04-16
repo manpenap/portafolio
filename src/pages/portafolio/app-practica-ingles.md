@@ -3,7 +3,7 @@ title: "Let's Talk: Domina el Inglés Conversacional con Tecnología y Creativid
 date: "2025-04-14"
 layout: "../../layouts/PostLayout.astro"
 ---
-<a href="https://chat-app-gamma-mauve.vercel.app/" target="_blank" style="color: gray; text-decoration: none;">🚀 Ver el proyecto en Vercel</a> 
+<a href="https://chat-app-gamma-mauve.vercel.app/" target="_blank" style="color: gray; text-decoration: none;">🚀 Ver el proyecto en Vercel</a> | <a href="https://github.com/manpenap/chat-app" target="_blank" style="color: gray; text-decoration: none;">💻 Repositorio en GitHub</a>
 
 # 🗣️ Let's Talk: Domina el Inglés Conversacional con Tecnología y Creatividad
 
@@ -47,4 +47,4 @@ Si te interesa ver el código o probar la app, estaré encantado de compartirlo.
 
 📬 ¿Te gustaría conversar? ¡Estoy listo para nuevos desafíos!
 
-<a href="https://react-shopi-store.vercel.app" target="_blank" style="color: gray; text-decoration: none;">🚀 Ver el proyecto en Vercel</a> 
+<a href="https://react-shopi-store.vercel.app" target="_blank" style="color: gray; text-decoration: none;">🚀 Ver el proyecto en Vercel</a> | <a href="https://github.com/manpenap/chat-app" target="_blank" style="color: gray; text-decoration: none;">💻 Repositorio en GitHub</a>
