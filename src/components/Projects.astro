@@ -16,13 +16,17 @@ const proyectos = [
     enlace: "/portafolio/tienda-virtual-react",
     imagen: "/assets/shopi.png",
   },
-
- 
   {
     nombre: "Conversaciones en Inglés con IA",
     descripcion: "Aplicación para práctica de Inglés conversacional, desarrollado en React, Node.JS, Mongo DB y API de OpenIA.",
     enlace: "/portafolio/app-practica-ingles",
     imagen: "/assets/chat-app.png",
+  },
+  {
+    nombre: "Landing Page Profesional",
+    descripcion: "Landing page de alto rendimiento con Astro, TypeScript y Tailwind CSS, optimizada para conversiones y SEO.",
+    enlace: "/portafolio/landing-page-profesional",
+    imagen: "/assets/landing-pro.png",
   },
    /*
   {
@@ -51,7 +55,7 @@ const proyectos = [
     >
       Mis Proyectos
     </h2>
-    <div class="grid gap-6 mb-12 md:grid-cols-2 lg:grid-cols-2">
+    <div class="grid gap-6 mb-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
       {
         proyectos.map((proyecto) => (
           <a
@@ -76,9 +80,9 @@ const proyectos = [
                   stroke="currentColor"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm7-1s-3-6-10-6-10 6-10 6 3 6 10 6 10-6 10-6z"
                   />
                 </svg>
@@ -99,7 +103,7 @@ const proyectos = [
   </div>
 
   <!-- Script para animación al hacer scroll -->
-  <script client:load>
+  <script>
     if (!window.hasRunProjectsObserver) {
       window.hasRunProjectsObserver = true;
 
