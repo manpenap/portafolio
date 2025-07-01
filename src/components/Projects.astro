@@ -17,14 +17,14 @@ const proyectos = [
     imagen: "/assets/shopi.png",
   },
   {
-    nombre: "Conversaciones en Inglés con IA",
-    descripcion: "Aplicación para práctica de Inglés conversacional, desarrollado en React, Node.JS, Mongo DB y API de OpenIA.",
+    nombre: "💬 Let's Talk - App de Chat con IA",
+    descripcion: "App de práctica conversacional en inglés con reconocimiento de voz y IA. Automatiza el aprendizaje y mejora la fluidez oral.",
     enlace: "/portafolio/app-practica-ingles",
     imagen: "/assets/chat-app.png",
   },
   {
-    nombre: "Landing Page Profesional",
-    descripcion: "Landing page de alto rendimiento con Astro, TypeScript y Tailwind CSS, optimizada para conversiones y SEO.",
+    nombre: "🎯 Landing Page Profesional",
+    descripcion: "Landing page de alto rendimiento optimizada para conversiones, con integración de APIs y analytics avanzados.",
     enlace: "/portafolio/landing-page-profesional",
     imagen: "/assets/landing-pro.png",
   },
@@ -51,10 +51,13 @@ const proyectos = [
 <section id="projects" class="py-12 px-4 bg-gray-100 dark:bg-gray-900">
   <div class="container mx-auto">
     <h2
-      class="text-3xl font-bold mt-12 text-gray-900 dark:text-white text-center mb-12"
+      class="text-4xl font-bold mt-12 text-gray-900 dark:text-white text-center mb-6"
     >
-      Mis Proyectos
+      💼 Proyectos Destacados
     </h2>
+    <p class="text-xl text-gray-600 dark:text-gray-300 text-center mb-12 max-w-3xl mx-auto">
+      Soluciones reales que demuestran cómo la tecnología puede optimizar procesos comerciales y mejorar la experiencia del usuario
+    </p>
     <div class="grid gap-6 mb-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
       {
         proyectos.map((proyecto) => (
