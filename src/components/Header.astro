@@ -48,9 +48,11 @@ import DarkModeToggle from "./DarkModeToggle.astro"
       });
     }
 
-    // Comportamiento de scroll del header
+    // Comportamiento de scroll del header mejorado
     let lastScrollTop = 0;
     let scrollTimeout: ReturnType<typeof setTimeout>;
+    let isScrollingDown = false;
+    let scrollDistance = 0;
     const header = document.getElementById('header');
     
     if (header) {
@@ -58,20 +60,39 @@ import DarkModeToggle from "./DarkModeToggle.astro"
         // Limpiar timeout anterior si existe
         clearTimeout(scrollTimeout);
         
-        // Agregar delay pequeño para evitar cambios muy frecuentes
+        // Agregar delay más largo para evitar cambios frecuentes
         scrollTimeout = setTimeout(() => {
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const scrollDelta = scrollTop - lastScrollTop;
           
-          if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scroll hacia abajo - ocultar header
-            header.style.transform = 'translateY(-100%)';
+          // Solo actuar si el scroll es significativo (más de 5px)
+          if (Math.abs(scrollDelta) < 5) {
+            return;
+          }
+          
+          if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            isScrollingDown = true;
+            scrollDistance += scrollDelta;
+            
+            // Solo ocultar después de scroll significativo hacia abajo (150px acumulados)
+            if (scrollDistance > 150 && scrollTop > 200) {
+              header.style.transform = 'translateY(-100%)';
+            }
           } else {
-            // Scroll hacia arriba o en la parte superior - mostrar header
+            // Scrolling up
+            if (isScrollingDown) {
+              // Reset when changing direction
+              scrollDistance = 0;
+              isScrollingDown = false;
+            }
+            
+            // Mostrar header inmediatamente al hacer scroll hacia arriba
             header.style.transform = 'translateY(0)';
           }
           
-          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Para móviles
-        }, 10);
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, 100); // Delay más largo para estabilidad
       });
     }
   </script>
