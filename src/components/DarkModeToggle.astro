@@ -19,11 +19,18 @@ class="px-4 py-2 bg-primary-default text-white hover:text-blue-500 rounded  flex
   document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById("darkModeToggle");
 
-    // Aplicar el estado guardado en localStorage
-    if (localStorage.getItem("theme") === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
+    // Aplicar el estado: modo oscuro por defecto
+    const savedTheme = localStorage.getItem("theme");
+    
+    if (savedTheme === "light") {
       document.documentElement.classList.remove("dark");
+    } else {
+      // Por defecto modo oscuro (si no hay preferencia o es "dark")
+      document.documentElement.classList.add("dark");
+      // Guardar la preferencia por defecto si no existe
+      if (!savedTheme) {
+        localStorage.setItem("theme", "dark");
+      }
     }
 
     toggle.addEventListener("click", () => {

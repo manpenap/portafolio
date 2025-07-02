@@ -19,6 +19,24 @@ import Footer from "../components/Footer.astro";
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Script para aplicar modo oscuro inmediatamente y evitar flash -->
+    <script>
+      // Ejecutar inmediatamente para evitar flash de modo claro
+      (function() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          // Por defecto modo oscuro
+          document.documentElement.classList.add("dark");
+          if (!savedTheme) {
+            localStorage.setItem("theme", "dark");
+          }
+        }
+      })();
+    </script>
+    
     <title>Mi Portafolio - Desarrollador Web</title>
     <meta
       name="description"
@@ -60,13 +78,4 @@ import Footer from "../components/Footer.astro";
 
     <Footer />
   </body>
-  <script client:load>
-    document.addEventListener("DOMContentLoaded", () => {
-      if (localStorage.getItem("theme") === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    });
-  </script>
 </html>
