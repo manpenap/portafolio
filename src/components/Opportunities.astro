@@ -1,0 +1,163 @@
+---
+// src/components/Opportunities.astro
+---
+
+<section id="opportunities" class="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        🎯 Buscando Oportunidades Para Aplicar Mi Perfil Híbrido
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
+        Explorando tanto oportunidades laborales en equipos como proyectos de consultoría independiente
+      </p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-2 max-w-6xl mx-auto">
+      <!-- Oportunidades Laborales -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg opacity-0 translate-y-10" data-animate="fade-up">
+        <div class="text-center mb-6">
+          <div class="text-4xl mb-4">🏢</div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            Para Equipos de Desarrollo
+          </h3>
+        </div>
+        
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="text-blue-500 text-xl mt-1">•</div>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Desarrollador Web Jr.</span> con perspectiva comercial
+            </p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="text-blue-500 text-xl mt-1">•</div>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Analista de Procesos</span> con habilidades técnicas
+            </p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="text-blue-500 text-xl mt-1">•</div>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Roles híbridos:</span> Product Owner, Business Analyst + Dev
+            </p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="text-blue-500 text-xl mt-1">•</div>
+            <p class="text-gray-700 dark:text-gray-300">
+              Posiciones donde <span class="font-semibold">tecnología y estrategia comercial</span> converjan
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
+          <div class="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
+            <p class="text-blue-800 dark:text-blue-300 font-medium text-center">
+              💼 Disponible para incorporación inmediata
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyectos de Consultoría -->
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg opacity-0 translate-y-10" data-animate="fade-up">
+        <div class="text-center mb-6">
+          <div class="text-4xl mb-4">🚀</div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            Para Proyectos de Consultoría
+          </h3>
+        </div>
+        
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="text-green-500 text-xl mt-1">•</div>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Digitalización</span> de procesos comerciales
+            </p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="text-green-500 text-xl mt-1">•</div>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Optimización</span> de flujos de captación de leads
+            </p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="text-green-500 text-xl mt-1">•</div>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Integración</span> de herramientas y automatización
+            </p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="text-green-500 text-xl mt-1">•</div>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-semibold">Consultoría técnica</span> con visión de negocio
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
+          <div class="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
+            <p class="text-green-800 dark:text-green-300 font-medium text-center">
+              🤝 Abierto a proyectos colaborativos
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensaje destacado -->
+    <div class="mt-12 text-center opacity-0 translate-y-10" data-animate="fade-up">
+      <div class="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 rounded-xl max-w-4xl mx-auto">
+        <h4 class="text-xl font-bold mb-2">
+          ✨ Mi Ventaja Competitiva
+        </h4>
+        <p class="text-lg">
+          15 años entendiendo cómo funcionan los negocios + habilidades técnicas actuales = 
+          <span class="font-bold">soluciones que realmente funcionan en el mundo real</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para animación al hacer scroll -->
+  <script>
+    if (!window.hasRunOpportunitiesObserver) {
+      window.hasRunOpportunitiesObserver = true;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.classList.add("animate-fade-in-up");
+                }, index * 200);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        const elements = document.querySelectorAll('#opportunities [data-animate="fade-up"]');
+        elements.forEach((el) => observer.observe(el));
+      });
+    }
+  </script>
+
+  <style>
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.6s ease-out forwards;
+    }
+  </style>
+</section>
