@@ -1,7 +1,7 @@
 ---
 import DarkModeToggle from "./DarkModeToggle.astro"
 ---
-<header class="fixed w-full bg-primary-default text-white z-50">
+<header id="header" class="fixed w-full bg-primary-default text-white z-50 transition-transform duration-300 ease-in-out">
   <div class="container mx-auto flex justify-between items-center px-6 py-4">
     <div class="flex flex-col">
       <h1 class="text-2xl font-bold">
@@ -28,23 +28,52 @@ import DarkModeToggle from "./DarkModeToggle.astro"
     </nav>
   </div>
 
-  <!-- Script para togglear el menú en móviles -->
+  <!-- Script para togglear el menú en móviles y comportamiento de scroll -->
   <script>
+    // Funcionalidad del menú móvil
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('translate-y-0');
-      
-    });
-
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('translate-y-0');
       });
-    });
+
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Comportamiento de scroll del header
+    let lastScrollTop = 0;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    const header = document.getElementById('header');
+    
+    if (header) {
+      window.addEventListener('scroll', () => {
+        // Limpiar timeout anterior si existe
+        clearTimeout(scrollTimeout);
+        
+        // Agregar delay pequeño para evitar cambios muy frecuentes
+        scrollTimeout = setTimeout(() => {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scroll hacia abajo - ocultar header
+            header.style.transform = 'translateY(-100%)';
+          } else {
+            // Scroll hacia arriba o en la parte superior - mostrar header
+            header.style.transform = 'translateY(0)';
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Para móviles
+        }, 10);
+      });
+    }
   </script>
 </header>
 
